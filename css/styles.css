@@ -1,0 +1,38 @@
+.navbar {
+    justify-content: flex-end;
+}
+
+#imgLogo {
+    width: 64px;
+    height: 64px;
+    padding: 1em;
+}
+
+.col-sm-4, .col-sm-8 {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+@media (min-width: 576px) {
+    #imgLogo {
+        width: 96px;
+        height: 96px;
+    }
+
+    .col-sm-4 {
+        justify-content: flex-end;
+    }
+
+    .col-sm-8 {
+        justify-content: flex-start;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+}
