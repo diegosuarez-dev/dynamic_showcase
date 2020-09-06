@@ -2,10 +2,26 @@
     justify-content: flex-end;
 }
 
+#titleContainer {
+    background: rgba(144,238,144,1);
+    background: -moz-linear-gradient(top, rgba(144,238,144,1) 0%, rgba(144,238,144,1) 4%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(144,238,144,1)), color-stop(4%, rgba(144,238,144,1)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(top, rgba(144,238,144,1) 0%, rgba(144,238,144,1) 4%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(top, rgba(144,238,144,1) 0%, rgba(144,238,144,1) 4%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(144,238,144,1) 0%, rgba(144,238,144,1) 4%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom, rgba(144,238,144,1) 0%, rgba(144,238,144,1) 4%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#90ee90', endColorstr='#ffffff', GradientType=0 );
+}
+
 #imgLogo {
     width: 64px;
     height: 64px;
     padding: 1em;
+}
+
+#btnCart > img {
+    width: 64px;
+    height: 64px;
 }
 
 .col-sm-4, .col-sm-8 {
@@ -16,10 +32,22 @@
 
 h1 {
     font-size: 1.5em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: darkgreen;
+}
+
+.veggies {
+    width: 100%;
+    height: 100%;
 }
 
 @media (min-width: 576px) {
     #imgLogo {
+        width: 96px;
+        height: 96px;
+    }
+
+    #btnCart > img {
         width: 96px;
         height: 96px;
     }
