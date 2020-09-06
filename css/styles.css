@@ -24,10 +24,11 @@
     height: 64px;
 }
 
-.col-sm-4, .col-sm-8 {
-    justify-content: center;
+#logoTitle {
     display: flex;
+    justify-content: center;
     align-items: center;
+    padding-bottom: 1.5em;
 }
 
 h1 {
@@ -50,14 +51,6 @@ h1 {
     #btnCart > img {
         width: 96px;
         height: 96px;
-    }
-
-    .col-sm-4 {
-        justify-content: flex-end;
-    }
-
-    .col-sm-8 {
-        justify-content: flex-start;
     }
 
     h1 {
