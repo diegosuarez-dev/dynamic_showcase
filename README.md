@@ -14,7 +14,7 @@ _HTML5, CSS3, Bootstrap y JavaScript (EC6)._
 
 ## Expresiones de Gratitud 🎁
 
-_Agradecimientos especiales por los iconos utilizados en el proyecto a:
+_Agradecimientos especiales por los iconos utilizados en el proyecto a:_
 
 * [FreePik](https://www.flaticon.es/autores/freepik)
 * [Mynamepong](https://www.flaticon.es/icono-gratis/mercado_862856)
