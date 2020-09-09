@@ -14,19 +14,19 @@ const generatePrice = () => {
 }
 
 const showBasket = () => {
-    basketView.innerHTML = '<div id="basketContent">';
+    let htmlContent = '<div id="basketContent" class="container-fluid"><div class="row">';
     vegetables.forEach(el => {
         if (el.units > 0) {
-            basketView.innerHTML += 
-            `<div class="basketItems">
-                <h6>${el.name}</h6>
-                <img class="basketImages" src="images/${el.name}.png" alt="Image of ${el.name}">
-                <div class="itemUnits">${el.units}</div>
-                <div class="itemPrice">${el.price.toFixed(2)}</div>
+            htmlContent += 
+            `<div class="col-2 col-sm-1 basketItems">
+                <img class="basketImages" src="images/${el.name}.png" alt="Image of ${el.name}" data-toggle="tooltip" title="${el.name}">
+                <div class="itemUnits">Unidades: ${el.units}</div>
+                <div class="itemPrice">Precio: ${el.price.toFixed(2)} €</div>
             </div>`;
         }
     });
-    basketView.innerHTML +='</div>';
+    htmlContent +='</div></div>';
+    basketView.innerHTML = htmlContent;
     basketIsHidden = false;
 }
 
