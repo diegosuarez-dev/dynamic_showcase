@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <title>Frutería y Verdulería Online</title>
 </head>
@@ -14,18 +15,20 @@
     <header>
         <nav class="navbar sticky-top navbar-light" style="background-color: lightgreen;">
             <button id="btnCart" class="btn btn-outline-success" type="button">
-                <img src="images/empty-basket.png" alt="cesta">
+                <img id="basket" src="images/empty-basket.png" alt="cesta">
+                <input id="total" type="text" readonly>
             </button>
         </nav>
     </header>
     <main>
+        <article id="basketView"></article>
         <article>
             <header>
                 <div id="titleContainer" class="container-fluid">
                     <div class="row">
                         <div id="logoTitle" class="col-12">
                             <img id="imgLogo" src="images/mercado.png" alt="Imagen de una frutería">
-                            <h1>Frutas & Verduras</h1>                            
+                            <h1>Veggies & Co</h1>                            
                         </div>
                     </div>
                 </div>
@@ -33,39 +36,39 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/apple.png" alt="Imagen de manzana"> </div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/avocado.png" alt="Imagen de aguacate"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/banana.png" alt="Imagen de plátano"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/broccoli.png" alt="Imagen de brócoli"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/carrot-1.png" alt="Imagen de zanahoria"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/cherry.png" alt="Imagen de cerezas"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/coconut.png" alt="Imagen de coco"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/corn.png" alt="Imagen de piña"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/cucumber.png" alt="Imagen de pepino"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/eggplant.png" alt="Imagen de berenjena"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/garlic.png" alt="Imagen de ajo"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/grapes.png" alt="Imagen de uvas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Manzanas" draggable="true"><img class="vImages" src="images/Manzanas.png" alt="Imagen de manzana" data-toggle="tooltip" title="Manzanas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Aguacates" draggable="true"><img class="vImages" src="images/Aguacates.png" alt="Imagen de aguacate" data-toggle="tooltip" title="Aguacates"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Plátanos" draggable="true"><img class="vImages" src="images/Plátanos.png" alt="Imagen de plátano" data-toggle="tooltip" title="Plátanos"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Brócoli" draggable="true"><img class="vImages" src="images/Brócoli.png" alt="Imagen de brócoli" data-toggle="tooltip" title="Brócoli"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Zanahorias" draggable="true"><img class="vImages" src="images/Zanahorias.png" alt="Imagen de zanahoria" data-toggle="tooltip" title="Zanahorias"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Cerezas" draggable="true"><img class="vImages" src="images/Cerezas.png" alt="Imagen de cerezas" data-toggle="tooltip" title="Cerezas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Cocos" draggable="true"><img class="vImages" src="images/Cocos.png" alt="Imagen de coco" data-toggle="tooltip" title="Cocos"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Mazorcas" draggable="true"><img class="vImages" src="images/Mazorcas.png" alt="Imagen de piña" data-toggle="tooltip" title="Mazorcas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Pepinos" draggable="true"><img class="vImages" src="images/Pepinos.png" alt="Imagen de pepino" data-toggle="tooltip" title="Pepinos"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Berenjenas" draggable="true"><img class="vImages" src="images/Berenjenas.png" alt="Imagen de berenjena" data-toggle="tooltip" title="Berenjenas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Ajos" draggable="true"><img class="vImages" src="images/Ajos.png" alt="Imagen de ajo" data-toggle="tooltip" title="Ajos"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Uvas" draggable="true"><img class="vImages" src="images/Uvas.png" alt="Imagen de uvas" data-toggle="tooltip" title="Uvas"></div>
                     </div>
                     <div class="row">
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/kiwi.png" alt="Imagen de kiwi"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/lemon.png" alt="Imagen de limón"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/lettuce.png" alt="Imagen de lechuga"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/lime.png" alt="Imagen de lima"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/mango.png" alt="Imagen de mango"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/melon-1.png" alt="Imagen de melón"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/mushroom.png" alt="Imagen de setas"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/onion-2.png" alt="Imagen de cebolla"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/orange.png" alt="Imagen de naranja"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/papaya.png" alt="Imagen de papaya"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/pineapple.png" alt="Imagen de piña"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/potato.png" alt="Imagen de patata"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Kiwis" draggable="true"><img class="vImages" src="images/Kiwis.png" alt="Imagen de kiwi" data-toggle="tooltip" title="Kiwis"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Limones" draggable="true"><img class="vImages" src="images/Limones.png" alt="Imagen de limón" data-toggle="tooltip" title="Limones"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Lechugas" draggable="true"><img class="vImages" src="images/Lechugas.png" alt="Imagen de lechuga" data-toggle="tooltip" title="Lechugas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Limas" draggable="true"><img class="vImages" src="images/Limas.png" alt="Imagen de lima" data-toggle="tooltip" title="Limas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Mangos" draggable="true"><img class="vImages" src="images/Mangos.png" alt="Imagen de mango" data-toggle="tooltip" title="Mangos"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Melones" draggable="true"><img class="vImages" src="images/Melones.png" alt="Imagen de melón" data-toggle="tooltip" title="Melones"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Setas" draggable="true"><img class="vImages" src="images/Setas.png" alt="Imagen de setas" data-toggle="tooltip" title="Setas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Cebollas" draggable="true"><img class="vImages" src="images/Cebollas.png" alt="Imagen de cebolla" data-toggle="tooltip" title="Cebollas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Naranjas" draggable="true"><img class="vImages" src="images/Naranjas.png" alt="Imagen de naranja" data-toggle="tooltip" title="Naranjas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Papayas" draggable="true"><img class="vImages" src="images/Papayas.png" alt="Imagen de papaya" data-toggle="tooltip" title="Papayas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Piñas" draggable="true"><img class="vImages" src="images/Piñas.png" alt="Imagen de piña" data-toggle="tooltip" title="Piñas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Patatas" draggable="true"><img class="vImages" src="images/Patatas.png" alt="Imagen de patata" data-toggle="tooltip" title="Patatas"></div>
                     </div>
                     <div class="row">
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/pumpkin.png" alt="Imagen de calabaza"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/raspberry.png" alt="Imagen de frambuesas"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/strawberry.png" alt="Imagen de fresas"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/tomato.png" alt="Imagen de tomate"></div>
-                        <div class="col-2 col-lg-1"><img class="veggies" src="images/watermelon-1.png" alt="Imagen de sandía"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Calabazas" draggable="true"><img class="vImages" src="images/Calabazas.png" alt="Imagen de calabaza" data-toggle="tooltip" title="Calabazas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Frambuesas" draggable="true"><img class="vImages" src="images/Frambuesas.png" alt="Imagen de frambuesas" data-toggle="tooltip" title="Frambuesas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Fresas" draggable="true"><img class="vImages" src="images/Fresas.png" alt="Imagen de fresas" data-toggle="tooltip" title="Fresas"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Tomates" draggable="true"><img class="vImages" src="images/Tomates.png" alt="Imagen de tomate" data-toggle="tooltip" title="Tomates"></div>
+                        <div class="col-2 col-lg-1 veggies" id="Sandías" draggable="true"><img class="vImages" src="images/Sandías.png" alt="Imagen de sandía" data-toggle="tooltip" title="Sandías"></div>
                     </div>
                     <div class="row"></div>
                     <div class="row"></div>
@@ -76,6 +79,7 @@
     <footer>
 
     </footer>
+    <script src="js/vegetable.js"></script>
     <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
