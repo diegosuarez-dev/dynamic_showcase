@@ -18,10 +18,15 @@ const showBasket = () => {
     vegetables.forEach(el => {
         if (el.units > 0) {
             htmlContent += 
-            `<div class="col-2 col-sm-1 basketItems">
+            `<div class="col-3 col-sm-2 col-lg-1 basketItems">
                 <img class="basketImages" src="images/${el.name}.png" alt="Image of ${el.name}" data-toggle="tooltip" title="${el.name}">
-                <div class="itemUnits">Unidades: ${el.units}</div>
-                <div class="itemPrice">Precio: ${el.price.toFixed(2)} €</div>
+                <div class="itemUnits">Ud: ${el.units}</div>
+                <div class="itemPrice">${el.price.toFixed(2)} €/ud.</div>
+                <div class="basketButtons">
+                    <button onclick="addOne(${el.name})" class="btn btn-outline-success" type="button"><img src="images/mas.png"></button>
+                    <button onclick="substractOne(${el.name})" class="btn btn-outline-success" type="button"><img src="images/menos.png"></button>
+                    <button onclick="remove(${el.name})" class="btn btn-outline-success" type="button"><img src="images/cerrar.png"></button>
+                </div>
             </div>`;
         }
     });
@@ -58,6 +63,10 @@ basket.addEventListener('drop', e => {
         }
     });
     totalInput.value = total.toFixed(2) + ' €';
+    if (!basketIsHidden) {
+        hideBasket();
+        showBasket();
+    }
 });
 basket.addEventListener('click',() => {
     if (basketIsHidden) {

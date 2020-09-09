@@ -71,6 +71,10 @@ h1 {
     height: 48;
 }
 
+.basketButtons > .btn {
+    padding: 0;
+}
+
 .vImages {
     width: 100%;
     height: 100%;
