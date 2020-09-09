@@ -1,4 +1,4 @@
-# Dynamic Showcase (carrito de la compra online de un supermercado)
+# Dynamic Showcase
 
 _Se trata del segundo reto propuesto en el bootcamp online de front end de GeeksHubsAcademy. Consiste en elaborar un showcase que permita añadir elementos a un carrito de la compra arrastrándolos, así como modificar la cesta o eliminar productos de la misma._
 
