@@ -68,12 +68,12 @@ h1 {
 
 .basketImages {
     width: 48px;
-    height: 48;
+    height: 48px;
 }
 
 .basketButtons > .btn {
     padding: 0;
-    width: 16px;
+    width: 24px;
 }
 
 .vImages {

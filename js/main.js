@@ -46,9 +46,9 @@ const hideBasket = () => {
 
 const changeBasketImg = () => {
     if (total > 0) {
-        basketImage.setAttribute('src','images/full-basket.png');
+        basketImage.setAttribute('src', 'images/full-basket.png');
     } else {
-        basketImage.setAttribute('src','images/empty-basket.png');
+        basketImage.setAttribute('src', 'images/empty-basket.png');
     }
 }
 
@@ -62,7 +62,7 @@ document.onclick = (e) => {
     } else if (nombreElemento.includes("remove")) {
         remove(nombreElemento.substring(6));
     }
-} 
+}
 
 const addOne = (productName) => {
     vegetables.forEach(el => {
@@ -97,7 +97,7 @@ const substractOne = (productName) => {
 const remove = (productName) => {
     vegetables.forEach(el => {
         if (el.name === productName) {
-            total -= el.price*el.units;
+            total -= el.price * el.units;
             el.units = 0;
             totalInput.value = total.toFixed(2) + ' €';
             changeBasketImg();
@@ -109,6 +109,30 @@ const remove = (productName) => {
     });
 }
 
+//Funcionalidad para navegadores móviles que simula una pulsación larga
+
+let timer;
+
+const mouseDown = (itemName) => {
+    timer = setTimeout(() => {
+        vegetables.forEach(el => {
+            if (el.name === itemName) {
+                total += el.price;
+                el.units += 1;
+                totalInput.value = total.toFixed(2) + ' €';
+                changeBasketImg();
+                if (!basketIsHidden) {
+                    hideBasket();
+                    showBasket();
+                }
+            }
+        });
+    }, 1000);
+};
+const mouseUp = () => {
+    clearTimeout(timer);
+};
+
 for (let i = 0; i < veggies.length; i++) {
     const veg = veggies[i];
 
@@ -116,7 +140,8 @@ for (let i = 0; i < veggies.length; i++) {
     veg.addEventListener('dragend', () => {
         setTimeout(() => draggedItem = null, 0);
     });
-
+    veg.addEventListener('touchstart', mouseDown(veg.id));
+    veg.addEventListener('touchend', mouseUp());
 
     const vegetable = new Vegetable(veg.id, generatePrice(), 0);
     vegetables.push(vegetable);
