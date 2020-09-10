@@ -8,13 +8,14 @@ let total = 0.0;
 let vegetables = [];
 let totalBill = [];
 let draggedItem = null;
+let timer; //Para funcionalidad en mobile que simula long touch
 
-const generatePrice = () => {
+const generatePrice = () => { //Genera precios automáticos para cada producto para probar el front end
     let price = Math.random() * 4;
     return price;
 }
 
-const showBasket = () => {
+const showBasket = () => { //Muestra la cesta siempre que haya productos seleccionados
     let htmlContent = '<div id="basketContent" class="container-fluid"><div class="row">';
     vegetables.forEach(el => {
         if (el.units > 0) {
@@ -39,12 +40,12 @@ const showBasket = () => {
     basketIsHidden = false;
 }
 
-const hideBasket = () => {
+const hideBasket = () => { //Oculta la cesta de la compra
     basketView.innerHTML = '';
     basketIsHidden = true;
 }
 
-const changeBasketImg = () => {
+const changeBasketImg = () => { //Cambia la imagen de la cesta según esté llena o vacía
     if (total > 0) {
         basketImage.setAttribute('src', 'images/full-basket.png');
     } else {
@@ -52,7 +53,7 @@ const changeBasketImg = () => {
     }
 }
 
-document.onclick = (e) => {
+document.onclick = (e) => { //Captura clicks de los botones que se generan para cada item de la cesta
     let elemento = e.target;
     let nombreElemento = elemento.id;
     if (nombreElemento.includes("add")) {
@@ -64,14 +65,14 @@ document.onclick = (e) => {
     }
 }
 
-const addOne = (productName) => {
+const addOne = (productName) => { //Añade una unidad de un producto a la cesta
     vegetables.forEach(el => {
         if (el.name === productName) {
             total += el.price;
             el.units += 1;
             totalInput.value = total.toFixed(2) + ' €';
             console.log(basketIsHidden);
-            if (!basketIsHidden) {
+            if (!basketIsHidden) { //Actualiza el html de la cesta
                 hideBasket();
                 showBasket();
             }
@@ -79,14 +80,14 @@ const addOne = (productName) => {
     });
 }
 
-const substractOne = (productName) => {
+const substractOne = (productName) => { //Resta una unidad de un producto de la cesta
     vegetables.forEach(el => {
         if (el.name === productName) {
             total -= el.price;
             el.units -= 1;
             totalInput.value = total.toFixed(2) + ' €';
             changeBasketImg();
-            if (!basketIsHidden) {
+            if (!basketIsHidden) { 
                 hideBasket();
                 showBasket();
             }
@@ -94,7 +95,7 @@ const substractOne = (productName) => {
     });
 }
 
-const remove = (productName) => {
+const remove = (productName) => { //Pone a 0 las unidades eliminando el elemento de la cesta
     vegetables.forEach(el => {
         if (el.name === productName) {
             total -= el.price * el.units;
@@ -109,44 +110,41 @@ const remove = (productName) => {
     });
 }
 
-//Funcionalidad para navegadores móviles que simula una pulsación larga
-
-let timer;
-
-const mouseDown = (itemName) => {
-    timer = setTimeout(() => {
-        vegetables.forEach(el => {
-            if (el.name === itemName) {
-                total += el.price;
-                el.units += 1;
-                totalInput.value = total.toFixed(2) + ' €';
-                changeBasketImg();
-                if (!basketIsHidden) {
-                    hideBasket();
-                    showBasket();
-                }
-            }
-        });
-    }, 1000);
-};
-const mouseUp = () => {
-    clearTimeout(timer);
-};
-
 for (let i = 0; i < veggies.length; i++) {
     const veg = veggies[i];
-
+    //Eventos de drag & drop: elemento a arrastrar
     veg.addEventListener('dragstart', () => draggedItem = veg.id);
     veg.addEventListener('dragend', () => {
         setTimeout(() => draggedItem = null, 0);
     });
-    veg.addEventListener('touchstart', mouseDown(veg.id));
-    veg.addEventListener('touchend', mouseUp());
-
+    //Funcionalidad para navegadores móviles que simula una pulsación larga
+    veg.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        timer = setTimeout(() => {
+            vegetables.forEach(el => {
+                if (el.name === veg.id) {
+                    total += el.price;
+                    el.units += 1;
+                    totalInput.value = total.toFixed(2) + ' €';
+                    changeBasketImg();
+                    if (!basketIsHidden) {
+                        hideBasket();
+                        showBasket();
+                    }
+                }
+            });
+        }, 1000);
+    });
+    veg.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        clearTimeout(timer);
+    });
+    //Generación del array de objetos arrastrables. Clase en vegetable.js
     const vegetable = new Vegetable(veg.id, generatePrice(), 0);
     vegetables.push(vegetable);
 }
 
+//Eventos de drag & drop: elemento hasta el que se arrastran los items
 basket.addEventListener('dragover', e => e.preventDefault());
 basket.addEventListener('dragenter', e => e.preventDefault());
 basket.addEventListener('drop', e => {
@@ -163,6 +161,8 @@ basket.addEventListener('drop', e => {
         }
     });
 });
+
+//Muestra y oculta la cesta
 basket.addEventListener('click', () => {
     if (basketIsHidden) {
         showBasket();
